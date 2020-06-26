@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import "./common.css";
 
 export default class Header extends Component {
   render() {
     return (
       <div>
-        <nav className="main-header navbar navbar-expand navbar-white navbar-light">
-          {/* Left navbar links */}
+        {/* fixed-top */}
+        <nav className="main-header navbar navbar-expand navbar-white navbar-light fixed-top">
           <ul className="navbar-nav">
             <li className="nav-item">
               <a
@@ -24,7 +25,7 @@ export default class Header extends Component {
             </li>
             <li className="nav-item d-none d-sm-inline-block">
               <a href="/" className="nav-link">
-                Automations
+                Work Flows
               </a>
             </li>
             <li className="nav-item d-none d-sm-inline-block">
@@ -32,13 +33,7 @@ export default class Header extends Component {
                 Templates
               </a>
             </li>
-            <li className="nav-item d-none d-sm-inline-block">
-              <a href="/" className="nav-link">
-                Schedules
-              </a>
-            </li>
           </ul>
-          {/* SEARCH FORM */}
           <form className="form-inline ml-3">
             <div className="input-group input-group-sm">
               <input
@@ -54,9 +49,8 @@ export default class Header extends Component {
               </div>
             </div>
           </form>
-          {/* Right navbar links */}
+
           <ul className="navbar-nav ml-auto">
-            {/* Notifications Dropdown Menu */}
             <li className="nav-item dropdown">
               <a className="nav-link" data-toggle="dropdown" href="/">
                 <i className="far fa-bell" />
@@ -74,7 +68,7 @@ export default class Header extends Component {
                 </a>
               </div>
             </li>
-            {/* <li className="nav-item">
+            <li className="nav-item">
               <a
                 className="nav-link"
                 data-widget="control-sidebar"
@@ -82,9 +76,15 @@ export default class Header extends Component {
                 href="/"
                 role="button"
               >
-                <i className="fas fa-th-large" />
+                <div className="text-center">
+                  <img
+                    className="profile-style"
+                    src="dist/img/user2-160x160.png"
+                    alt="User"
+                  />
+                </div>
               </a>
-            </li> */}
+            </li>
           </ul>
         </nav>
       </div>

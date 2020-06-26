@@ -1,0 +1,71 @@
+.dragging {
+  background: yellow;
+  transition: background-color 0.2s ease;
+}
+
+.react-beatiful-dnd-copy {
+  background: lightblue;
+}
+
+.react-beatiful-dnd-copy ~ [data-rbd-placeholder-context-id] {
+  display: none !important;
+}
+
+.shop {
+  padding: 10px;
+  /* border-left: 1px solid #aaa; */
+}
+
+.shopping-bag {
+  padding: 10px;
+  /* border: 1px dashed #777; */
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.form-bg {
+  /* background-color: black; */
+  background: black;
+
+  padding: 0px;
+}
+
+/* Uip */
+
+.ui-datepicker,
+.ui-datepicker table,
+.ui-datepicker tr,
+.ui-datepicker td,
+.ui-datepicker th {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-spacing: 0;
+}
+
+.ui-datepicker {
+  display: none;
+  width: 100%;
+  padding: 35px;
+  cursor: default;
+  text-transform: uppercase;
+  font-family: Tahoma;
+  font-size: 24px;
+  background: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: solid 1px #e91e62;
+}
+
+.ui-datepicker-header {
+  position: relative;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.ui-datepicker-title {
+  text-align: center;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PageHeader from "../components/PageHeader";
 
 export default class Content extends Component {
   componentDidMount() {
@@ -11,26 +12,8 @@ export default class Content extends Component {
     return (
       <div>
         <div className="content-wrapper">
-          {/* Content Header (Page header) */}
-          <section className="content-header">
-            <div className="container-fluid">
-              <div className="row mb-2">
-                <div className="col-sm-6">
-                  <h1>DataTables</h1>
-                </div>
-                <div className="col-sm-6">
-                  <ol className="breadcrumb float-sm-right">
-                    <li className="breadcrumb-item">
-                      <a href="faker">Home</a>
-                    </li>
-                    <li className="breadcrumb-item active">DataTables</li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-            {/* /.container-fluid */}
-          </section>
-          {/* Main content */}
+          <PageHeader title="History" />
+
           <section className="content">
             <div className="container-fluid">
               <div className="row">
@@ -41,7 +24,7 @@ export default class Content extends Component {
                         DataTable with minimal features &amp; hover style
                       </h3>
                     </div>
-                    {/* /.card-header */}
+
                     <div className="card-body">
                       <table
                         id="example2"
