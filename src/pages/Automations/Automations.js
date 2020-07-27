@@ -1,81 +1,122 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import openModal from "../../actions/openModal";
 import Process from "./Process";
 import Trigger from "./Trigger";
+import ContentLayout from "./ContentLayout";
+
+const automations = [
+  {
+    objectID: Math.floor(Math.random() * 101),
+    automationName: "FX Accounting Revaluation Setup",
+    startTime: "2020-07-24 03:43:55",
+    endTime: "",
+    status: "Running",
+  },
+];
+
+const listOfAutomations = [
+  {
+    objectID: "loa1",
+    option: "FX Accounting Revaluation",
+  },
+  {
+    objectID: "loa2",
+    option: "FX Accounting Setup",
+  },
+  {
+    objectID: "loa3",
+    option: "Transportation",
+  },
+  {
+    objectID: "loa4",
+    option: "Asset Transfer",
+  },
+  {
+    objectID: "loa5",
+    option: "Secondary Ledger",
+  },
+  {
+    objectID: "loa6",
+    option: "SVOD",
+  },
+  {
+    objectID: "loa7",
+    option: "CFS Promotions",
+  },
+  {
+    objectID: "loa8",
+    option: "Choose automation...",
+  },
+];
 
 class Automations extends Component {
-  state = {
-    automations: [57, 34, 89],
-  };
-  render() {
-    const processes = this.state.automations.map((process, index) => {
-      return <Process progress={process} key={index} />;
+  constructor() {
+    super();
+    this.state = {
+      automations: automations,
+      listOfAutomations: listOfAutomations,
+      selectedAutomation: "Choose automation...",
+    };
+  }
+
+  onAddTriggers = (event) => {
+    const value = this.state.selectedAutomation;
+    if (value === "Choose automation...") {
+      alert("choose one");
+      return;
+    }
+    const newTrigger = {
+      objectID: Math.floor(Math.random() * 101),
+      automationName: this.state.selectedAutomation,
+      startTime: "2020-07-24 03:43:55",
+      endTime: "",
+      status: "Running",
+    };
+
+    this.setState((state) => {
+      const automations = state.automations.concat(newTrigger);
+      return {
+        automations,
+      };
     });
+  };
+
+  handleSelectedAutomation = (event) => {
+    const value = event.target.value;
+    this.setState({ selectedAutomation: value });
+  };
+
+  render() {
+    const { automations } = this.state;
+
     return (
-      <section className="content">
-        <div className="container-fluid">
-          <div className="card card-primary">
-            <div className="card-header">
-              <h3 className="card-title">Automations</h3>
-              <div className="card-tools">
-                <button
-                  type="button"
-                  className="btn btn-tool"
-                  data-card-widget="collapse"
-                  data-toggle="tooltip"
-                  title="Collapse"
-                >
-                  <i className="fas fa-minus" />
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-tool"
-                  data-card-widget="remove"
-                  data-toggle="tooltip"
-                  title="Remove"
-                >
-                  <i className="fas fa-times" />
-                </button>
-              </div>
-            </div>
-            <div className="card-body p-0">
-              <Trigger />
-            </div>
-            <div className="card-body p-0">
-              <table className="table table-striped projects">
-                <thead>
-                  <tr>
-                    <th style={{ width: "1%" }}>#</th>
-                    <th style={{ width: "20%" }}>Automation Name</th>
-                    <th style={{ width: "30%" }}>Team Members</th>
-                    <th>Automation Progress</th>
-                    <th style={{ width: "8%" }} className="text-center">
-                      Status
-                    </th>
-                    <th style={{ width: "20%" }}></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <>{processes}</>
-                </tbody>
-              </table>
-            </div>
-          </div>
+      <ContentLayout>
+        <div className="card-body p-0">
+          <Trigger
+            onAddTriggers={this.onAddTriggers}
+            listOfAutomations={this.state.listOfAutomations}
+            handleSelectedAutomation={this.handleSelectedAutomation}
+            selectedAutomation={this.state.selectedAutomation}
+          />
         </div>
-      </section>
+        <div className="card-body p-0">
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Automation Name</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
+                <th scope="col">Status</th>
+                <th scope="col" className="text-right"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <Process automations={automations} />
+            </tbody>
+          </table>
+        </div>
+      </ContentLayout>
     );
   }
 }
 
-function mapDispatchToProps(dispath) {
-  return bindActionCreators(
-    {
-      openModal: openModal,
-    },
-    dispath
-  );
-}
-
-export default connect(null, mapDispatchToProps)(Automations);
+export default Automations;

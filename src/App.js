@@ -9,6 +9,7 @@ import Template from "./pages/Template/Template";
 import FormStepper from "./pages/FormStepper/FormStepper";
 import AutomationLayout from "./pages/Automations/AutomationLayout";
 import Modal from "./utility/Modal/Modal";
+import "./App.css";
 
 export default class App extends Component {
   render() {
